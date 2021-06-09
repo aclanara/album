@@ -27,7 +27,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+      return view('/pages/photo_form');
     }
 
     /**
@@ -38,7 +38,20 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //Criação de um objeto do tipo Photo
+      $photo = new Photo();
+
+      //Alterando os atributos do objeto
+      $photo->title = $request->title;
+      $photo->date = $request->date;
+      $photo->description = $request->description;
+      $photo->photo_url = "teste";
+
+      //Inserindo no banco de dados
+      $photo->save();
+
+      //Redirecionar para a página inicial
+      return redirect('/');
     }
 
     /**

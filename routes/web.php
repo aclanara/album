@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PhotoController::class,'index']);
 
-Route::get('/photos/new', function(){
-  return view('/pages/photo_form');
-});
+Route::get('/photos/new', [PhotoController::class, 'create']);
+
+Route::post('/photos', [PhotoController::class, 'store']);

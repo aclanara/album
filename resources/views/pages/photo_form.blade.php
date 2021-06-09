@@ -2,26 +2,31 @@
 @section('content')
 @include('/partials/navbar')
 <div class="container">
-  <div class="row">
 
+  <!-- Coluna btn Voltar -->
+  <div class="row">
     <div class="col-12 my-4">
-      <a href=""><i class="fas fa-arrow-left"></i> Voltar</a>
+      <a href=""><i class="fas fa-arrow-left me-2"></i>Voltar</a>
     </div>
 
+    <!-- Coluna card form -->
     <div class="col-12">
       <div class="card shadow bg-white rounded">
         <div class="card-header gradient text-white">
-          <h2 class="card-title"><i class="fas fa-image"></i> Nova Imagem</h2>
+          <h2 class="card-title p-3"><i class="fas fa-image"></i> Nova Imagem</h2>
         </div>
 
-        <div class="card-body">
-          <div class="p-md-3">
-            <form action="">
+        <div class="card-body p-4">
+            <form action="/photos" method="POST">
+            @csrf
+
               <div class="row">
+              <!-- Coluna da imagem -->
                 <div class="col-lg-6">
                   <div class="d-flex flex-column h-100">
                     <div class="miniatura img-thumbnail d-flex flex-column justify-content-center align-items-center h-100 mt-4">
-                      <i class="far fa-image"></i> <br>
+                      <i class="far fa-image"></i>
+                      <br>
                       <small> </small>
                     </div>
                     <div class="form-group mt-2">
@@ -30,44 +35,51 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div><!-- Fim da coluna da imagem -->
 
+                <!-- Coluna das inputs -->
                 <div class="col-lg-6">
+                <!-- Título -->
                   <div class="form-group">
-                    <label for="text">Título</label>
+                    <label for="title">Título</label>
                       <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text"> <i class="fas fa-image"></i> </div>
-                        </div> <input id="text" name="text" type="text" class="form-control"
+                        <div class="input-group-text"> <i class="fas fa-image"></i>
+                        </div>
+                        <input id="title" name="title" type="text" class="form-control"
                           placeholder="Digite o título da sua imagem">
                       </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="text">Data</label>
+                  <!-- Data -->
+                  <div class="form-group mt-3">
+                    <label for="date">Data</label>
                       <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text"> <i class="far fa-calendar-alt"></i> </div>
-                        </div> <input id="text" name="text" type="date" class="form-control">
+                          <div class="input-group-text"> <i class="far fa-calendar-alt"></i>
+                          </div>
+                        <input id="date" name="date" type="date" class="form-control">
                       </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="textarea">Descrição</label>
-                    <textarea id="textarea" name="textarea" cols="40" rows="5" class="form-control"
+                  <!-- Descrição -->
+                  <div class="form-group mt-3">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" name="description" cols="40" rows="5" class="form-control"
                       placeholder="Digite uma pequena descrição da imagem"></textarea>
                   </div>
-                  <div class="form-group d-flex">
-                    <button name="submit" type="submit" class="btn btn-laranja">Limpar</button>
-                    <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
+
+                  <!-- Botões -->
+                  <div class="form-group d-flex mt-3">
+                    <button name="submit" type="reset" class="btn btn-laranja flex-grow-1 me-2">Limpar</button>
+                    <button name="submit" type="submit" class="btn btn-primary flex-grow-1">Salvar</button>
                   </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+                </div><!-- Fim da coluna das inputs -->
+              </div><!-- Fim da row -->
+            </form><!-- Fim do form -->
+        </div><!-- Fim do card-body -->
+      </div><!-- Fim do card -->
+
+    </div><!-- Fim da coluna card form -->
+  </div><!-- Fim da row -->
+</div><!-- Fim do container -->
 @endsection
