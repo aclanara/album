@@ -35,8 +35,8 @@
               <tr class="align-middle">
                 <td> {{$photo->id}} </td>
                 <td>
-                  <img width="200" class="img-thumbnail"
-                    src="https://www.osmais.com/wallpapers/201209/dia-de-chuva-wallpaper.jpg" alt="">
+                  <img width="200" class="img-thumbnail" style="object-fit: cover; height: 116px;"
+                    src="{{url("/storage/photos/$photo->photo_url")}}" alt="">
                 </td>
                 <td> {{$photo->title}} </td>
                 <td> {{$photo->date}} </td>
@@ -81,7 +81,7 @@
         <form action="/photos/" method="POST" id="formDeletePhoto">
           @method('DELETE')
           @csrf
-          <button class="btn btn-danger" type="submit">Sim, excluir</i></button>
+          <button class="btn btn-danger" type="submit">Sim, excluir</button>
         </form>
     </div>
   </div>
