@@ -15,15 +15,16 @@
         <div class="card-header gradient text-white">
           <h2 class="card-title p-3"><i class="fas fa-image"></i>{{isset($photo) ? 'Alterar Foto' : 'Nova Foto'}}</h2>
         </div>
-
         <div class="card-body p-4">
-            {{-- Form --}}
+
+            <!-- Form -->
             @if (isset($photo))
-              <form action="/photos/{{$photo->id}}" method="POST">
+              <form action="/photos/{{$photo->id}}" method="POST" enctype="multipart/form-data">
               @method('PUT')
             @else
               <form action="/photos" method="POST" enctype="multipart/form-data">
             @endif
+
             @csrf
 
               <div class="row">
@@ -32,11 +33,14 @@
                 <div class="col-lg-6">
                   <div class="d-flex flex-column h-100">
                     <div class="miniatura img-thumbnail d-flex flex-column justify-content-center align-items-center h-100 mt-4">
-                      <img id="imgPrev" height="340" class="w-100" style="object-fit: cover;" src="{{asset('/img/img_padrao.png')}}" alt="">
+                      <img id="imgPrev" height="340" class="w-100" style="object-fit: cover;" src="{{isset($photo->photo_url) ? url("/storage/photos/$photo->photo_url") : asset('/img/img_padrao.png')}}" alt="">
                     </div>
                     <div class="form-group mt-2">
                       <div class="custom-file">
-                        <input id="photo" name="photo" type="file" class="custom-file-input" onchange="loadFile(event)">
+                        <input id="photo" name="photo" type="file"
+                        accept="image/png, image/jpeg, image/gif"
+                        class="custom-file-input" onchange="loadFile(event)"
+                        @empty($photo) required @endempty>
                       </div>
                     </div>
                   </div>
