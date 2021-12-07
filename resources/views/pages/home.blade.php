@@ -39,7 +39,7 @@
         <div class="card-body">
           <p class="card-text">{{ $photo->title }}
           <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted text-center">Por: Fernando</small>
+            <small class="text-muted text-center">{{ $photo->user->name }}</small>
             <small class="text-muted text-center">{{ $photo->date }}</small>
           </div>
         </div>

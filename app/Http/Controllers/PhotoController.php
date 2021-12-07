@@ -22,7 +22,7 @@ class PhotoController extends Controller
 
     public function showAll()
     {
-      $photos = Photo::all();
+      $photos = Photo::all()->where('user_id', auth()->user()->id);
       return view('/pages/photo_list', ['photos' => $photos]);
     }
 
@@ -51,6 +51,7 @@ class PhotoController extends Controller
       $photo->title = $request->title;
       $photo->date = $request->date;
       $photo->description = $request->description;
+      $photo->user_id = auth()->user()->id;
 
       //Upload da foto
       if($request->hasFile('photo') && $request->file('photo')->isValid()){
